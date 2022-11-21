@@ -56,7 +56,10 @@ app.post('/login', (req, res, next) => {
             });
 
         } else {
-            res.status(401).send("username or password is incorrect")
+            res.json({
+                status: 401,
+                message: "username or password is incorrect"
+            })
         }
     })
 
