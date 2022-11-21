@@ -21,6 +21,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors("*"));
+app.use(express.static('public'));
 
 app.get('/', (req, res, next) => {
     res.send("this is the test route for carlos dashboard")

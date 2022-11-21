@@ -51,6 +51,15 @@ router.post('/', (req, res, next) => {
         })
 })
 
+router.delete('/:id', (req, res, next) => {
+    const { id } = req.params;
+    Reservation.findByIdAndDelete(id).then(() => {
+        res.send("reservation deleted")
+    }).catch(err => {
+        console.log(err)
+    })
+})
+
 
 
 export default router;
