@@ -3,7 +3,9 @@ const Schema = mongoose.Schema;
 
 
 const orderSchem = new Schema({
-    order: String
+    order: String,
+    date: { type: Date, default: Date.now() },
+    completed: { type: Boolean, default: false }
 });
 
 
