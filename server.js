@@ -4,7 +4,8 @@ import cors from 'cors';
 import mongoose from "mongoose";
 import reservationRoutes from "./routes/reservation.js";
 import feedbackRoutes from "./routes/feedback.js";
-import foodSuggestionRoutes from "./routes/foodSuggestion.js"
+import foodSuggestionRoutes from "./routes/foodSuggestion.js";
+import orderRoutes from "./routes/orders.js"
 import User from './models/users.js';
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
@@ -96,6 +97,7 @@ app.post('/register', (req, res, next) => {
 app.use('/reservation', reservationRoutes);
 app.use('/feedback', feedbackRoutes);
 app.use('/food-suggestion', foodSuggestionRoutes);
+app.use('/order', orderRoutes)
 
 
 
