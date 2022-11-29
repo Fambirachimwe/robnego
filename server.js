@@ -77,7 +77,11 @@ app.post('/register', (req, res, next) => {
     //  check if the email provvide is in the db
     User.find({ email: email }).then(data => {
         if (data.length > 0) {
-            res.status(400).send("email provided is already in use")
+
+            res.json({
+                status: 400,
+                message: "Email provided is alredy in use",
+            })
         } else {
             bcrypt.hash(password, 10, function (err, hash) {
                 // Store hash in your password DB.
