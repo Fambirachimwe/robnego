@@ -91,7 +91,10 @@ app.post('/register', (req, res, next) => {
                         phoneNumber: phoneNumber
                     }).save()
                         .then(data => {
-                            res.send("Registration successfull please login")
+                            res.json({
+                                status: 200,
+                                message: "user Created",
+                            })
                         })
 
                 } catch (error) {
