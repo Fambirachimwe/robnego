@@ -49,7 +49,8 @@ app.post('/login', (req, res, next) => {
 
                     res.json({
                         status: 200,
-                        token: token
+                        token: token,
+                        email: email
                     })
 
                 } else {
