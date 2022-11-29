@@ -81,15 +81,26 @@ app.post('/register', (req, res, next) => {
         } else {
             bcrypt.hash(password, 10, function (err, hash) {
                 // Store hash in your password DB.
-                new User({
-                    username: username,
-                    email: email,
-                    password: hash,
-                    phoneNumber: phoneNumber
-                }).save()
-                    .then(data => {
-                        res.send("Registration successfull please login")
+
+                try {
+
+                    new User({
+                        username: username,
+                        email: email,
+                        password: hash,
+                        phoneNumber: phoneNumber
+                    }).save()
+                        .then(data => {
+                            res.send("Registration successfull please login")
+                        })
+
+                } catch (error) {
+                    res.json({
+                        status: 401,
+                        message: "Failed to Create User",
                     })
+                }
+
             });
         }
     })
