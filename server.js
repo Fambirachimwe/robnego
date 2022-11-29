@@ -47,7 +47,10 @@ app.post('/login', (req, res, next) => {
                         , 'secret'
                     );
 
-                    res.send(token)
+                    res.json({
+                        status: 200,
+                        token: token
+                    })
 
                 } else {
                     res.json({
