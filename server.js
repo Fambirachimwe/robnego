@@ -97,7 +97,7 @@ app.post('/register', (req, res, next) => {
 app.use('/reservation', reservationRoutes);
 app.use('/feedback', feedbackRoutes);
 app.use('/food-suggestion', foodSuggestionRoutes);
-app.use('/order', orderRoutes)
+app.use('/orders', orderRoutes)
 
 
 
