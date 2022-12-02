@@ -14,6 +14,19 @@ router.get('/', (req, res, next) => {
             res.send(data)
         }
     })
+});
+
+router.get('/:id', (req, res, next) => {
+    const { id } = req.params;
+
+    Order.findById(id).then(data => {
+        if (data) {
+            res.send(data)
+
+        } else {
+            res.send("No orders")
+        }
+    })
 })
 
 
@@ -25,9 +38,29 @@ router.post('/', (req, res, next) => {
         .then(data => {
             res.send(data)
         })
+});
+
+router.put('/:id', (req, res, next) => {
+    const { id } = req.params;
+
+    const { completed } = req.body;
+
+    Order.findByIdAndUpdate(id, {
+        completed: completed
+    }).save()
+        .then(data => {
+            res.send(data)
+        })
+
 })
 
 
+router.delete('/:id', (req, res, next) => {
+    const { id } = req.params;
+    Order.findOneAndDelete({ _id: id }).then((data) => {
+        res.send("Order deleted")
+    })
+})
 
 
 export default router;

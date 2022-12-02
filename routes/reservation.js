@@ -60,6 +60,14 @@ router.delete('/:id', (req, res, next) => {
     })
 })
 
-
+router.put('/:id', (req, res, next) => {
+    const { id } = req.params;
+    const { completed } = req.body;
+    Reservation.findByIdAndUpdate(id, {
+        completed: completed
+    }).then(() => {
+        res.send("Reservation update completed")
+    })
+})
 
 export default router;
